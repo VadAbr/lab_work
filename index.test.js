@@ -7,15 +7,13 @@ describe("Test the test path", () => {
     done()
   })
 
-  afterAll(done => {
-    mongoose.connection.close()
+  afterAll(async (done) => {
+    await mongoose.connection.close();
     done()
   })
 
-  test("It should response the GET method", (done) => {
-    request(app)
-      .get("/test")
-      .expect(200);
-    done()
+  test("It should response the GET method", async () => {
+    const res = await request(app.app).get("/test");
+    expect(res.statusCode).toBe(200);
   });
 });

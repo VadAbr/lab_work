@@ -12,7 +12,7 @@ const UsersConnection = new mongoose.Schema({
 const CountModel = mongoose.model("Count", CountSchema)
 const UsersConnectionModel = mongoose.model("Users", UsersConnection)
 
-mongoose.connect('mongodb://mongodbuser:mongodbpassword@mongo:27017/', {useNewUrlParser: true})
+const db = mongoose.connect('mongodb://mongodbuser:mongodbpassword@mongo:27017/', {useNewUrlParser: true})
 mongoose.connection.on('error', (e)=>console.log(e))
 mongoose.connection.once('open', ()=>console.log('CONNECTED'))
 
@@ -24,7 +24,6 @@ const userHandle = (r) => {
         console.log("USER", user)
     })
 }
-app.listen(5000, ()=>console.log('STARTED SERVER'));
 
 app
 .get('/', async (r, res) => {
@@ -60,5 +59,6 @@ app
       res.send('end test')
   })
 
+app.listen(5000, ()=>console.log('STARTED SERVER'));
 
-module.exports = app
+module.exports = {app, db}
