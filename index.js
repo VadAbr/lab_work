@@ -1,5 +1,5 @@
-import express from 'express';
-import mongoose from 'mongoose'
+const express =  require ('express');
+const mongoose = require ('mongoose')
 const CountSchema = new mongoose.Schema({
     count: Number
 })
@@ -54,5 +54,11 @@ app
     <b>Hostname:</b> ${r.headers['user-agent']}<br/>
     `)
 })
+  .get("/test", (r, res)=>{
+      res.status(200)
+      res.send('end test')
+  })
 
 app.listen(5000, ()=>console.log('STARTED SERVER'));
+
+module.exports = app
