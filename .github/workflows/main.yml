@@ -14,8 +14,6 @@ jobs:
         node-version: [15.x]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-
-      - name: Jest test
-        run: npm install && npm run test
+    - uses: actions/checkout@v1
+    - name: Run Jest
+      uses: stefanoeb/jest-action@1.0.3
