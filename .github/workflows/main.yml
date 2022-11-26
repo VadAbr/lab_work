@@ -3,19 +3,14 @@ name: Github Pages Deploy
 on:
   push:
     branches:
-      - "master"
+      - "main"
 
 jobs:
   run-test:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [15.x]
-
     steps:
       - name: Checkout
         uses: actions/checkout@v1
 
       - name: Jest test
-        run: npm run test
+        run: npm install && npm run test
