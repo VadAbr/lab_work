@@ -24,6 +24,7 @@ const userHandle = (r) => {
         console.log("USER", user)
     })
 }
+app.listen(5000, ()=>console.log('STARTED SERVER'));
 
 app
 .get('/', async (r, res) => {
@@ -59,6 +60,5 @@ app
       res.send('end test')
   })
 
-app.listen(5000, ()=>console.log('STARTED SERVER'));
 
 module.exports = app

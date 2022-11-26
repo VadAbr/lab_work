@@ -12,9 +12,10 @@ describe("Test the test path", () => {
     done()
   })
 
-  test("It should response the GET method", () => {
-    return request(app)
+  test("It should response the GET method", (done) => {
+    request(app)
       .get("/test")
       .expect(200);
+    done()
   });
 });
